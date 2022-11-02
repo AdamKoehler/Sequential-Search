@@ -17,8 +17,11 @@ int main() {
 
 	return 0;
 }
+
 void getFile() {
-	// get the file
+	// getFile() will get the file name and go through the contents of that file
+	// getFile() calls other methods when needed. its essentialy the main method...
+	
 	cout << "enter name of file path: ";
 	string name;
 	getline(cin, name);
@@ -33,7 +36,7 @@ void getFile() {
 		cin >> f;
 		// we have our array and value to search. sequential search for it now.
 		int count = 0;
-		for (int i = 0; i < arraySize; i++) { // could make a function but its so simple that its not worth it at the moment.
+		for (int i = 0; i < arraySize; i++) {
 		if (megaint[i] == f) {
 			break;
 		}	
@@ -41,13 +44,14 @@ void getFile() {
 		}
 
 		cout << "\n\nSequential search took " << count << " tries.";
+		
 		//just need to sort the array now. send it
 		selectionSort(megaint, arraySize);
 	}
 	else
 	{
-		cout << "sorry file invalid try again m8;";
-		getFile();
+		cout << "sorry file invalid try again ";
+		getFile(); // recall the method
 	}
 }
 
@@ -55,6 +59,7 @@ void selectionSort(int name[], int size) {
 	for (int start = 0; start < (size - 1); start++) { // itereate through 0-999999 for comparrison 1.
 		for (int index = start + 1; index < size; index++) { // iterate through 1-100000 for comparrison 2.
 			// essentially if array [0] < array [1] so fourth... hence index = start + 1...
+			
 			if (name[index] < name[start]) { // lowest value has been found now. just assign it to appropriate subscript if needed.
 				swap(name[index], name[start]);
 			}
@@ -67,6 +72,7 @@ void selectionSort(int name[], int size) {
 }
 
 void swap(int& a, int& b) {
+	// simple integer swap function.
 	int x = a;
 	a = b;
 	b = x;
